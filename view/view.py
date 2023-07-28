@@ -14,26 +14,27 @@ eel.init(os.path.join(dirname, "web/"))
 
 # Thread for eel instance
 eel_thread = threading.Thread(target=lambda: eel.start("index.html",
-                                          close_callback=lambda a, b: os._exit(
-                                              0),
-                                          cmdlines_args=['--start-fullscreen'
-                                                         ]))
+                                                       cmdlines_args=['--start-fullscreen'
+                                                                      ],
+                                                       close_callback=lambda a, b: os._exit(
+                                                           0)
+                                                       )
+                              )
+
 
 # Thread function for registering unlocks.
 def registerMonitor():
-    m = registerUnlock.WTSMonitor(lambda: eel.show("index.html"), all_sessions=True)
+    m = registerUnlock.WTSMonitor(
+        lambda: eel.show("index.html"), all_sessions=True)
     m.start()
+
+
 WTS_thread = threading.Thread(target=registerMonitor)
 
 # Starting threads
 eel_thread.start()
 WTS_thread.start()
 
-# Joining threads 
+# Joining threads
 WTS_thread.join()
 eel_thread.join()
-
-
-
-# Register showing on unlock
-
