@@ -97,6 +97,3 @@ class WTSMonitor():
 if __name__ == '__main__':
     m = WTSMonitor(lambda: print("unlocked"), all_sessions=True)
     m.start()
-
-
-print("sujasgljl")
