@@ -17,3 +17,4 @@ while True:
         print("Correct answer!")
     else:
         print("Wrong answer!")
+        print("Correct answer is " + str(questionObject["acceptedAnswers"]))
