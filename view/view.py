@@ -16,8 +16,8 @@ eel.init(os.path.join(dirname, "web/"))
 eel_thread = threading.Thread(target=lambda: eel.start("index.html",
                                                        cmdlines_args=['--start-fullscreen'
                                                                       ],
-                                                       close_callback=lambda a, b: os._exit(
-                                                           0)
+                                                    #    close_callback=lambda a, b: os._exit(
+                                                    #        0)
                                                        )
                               )
 
