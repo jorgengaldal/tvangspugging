@@ -92,8 +92,6 @@ input[type="text"]:focus-visible {
     display: flex;
     flex-direction: column;
     list-style-type: none;
-    /* justify-content: center; */
-    /* align-items: center; */
     gap: 0.2em;
     overflow-y: auto;
     overflow-x: hidden;
@@ -108,14 +106,6 @@ input[type="text"]:focus-visible {
     margin-right: auto;
     text-align: center;
     color: black;
-}
-
-/* #feedback-popup #acceptable-answers-list::before {
-    content: '👉'
-} */
-
-#feedback-popup #correctness-subheading {
-    /* margin-bottom: auto; */
 }
 
 #feedback-popup #press-any-key {
