@@ -2,6 +2,22 @@ import time
 import eel
 import os
 import threading
+import importlib
+import sys
+# from ..model.getRandomQuestion import getQuestion
+
+
+# Dynamically imports getRandomQuestion
+randomQuestionPath = os.path.abspath(os.path.join(__file__, "../../model/getRandomQuestion.py"))
+spec = importlib.util.spec_from_file_location("getRandomQuestion", randomQuestionPath)
+getRandomQuestionModule = importlib.util.module_from_spec(spec)
+sys.modules["getRandomQuestion"] = getRandomQuestionModule
+spec.loader.exec_module(getRandomQuestionModule)
+    
+
+@eel.expose
+def startPopulating(*args):
+    eel.populate(getRandomQuestionModule.getQuestion())
 
 # Importing registerUnlock using relative path
 import sys
@@ -16,6 +32,7 @@ eel.init(os.path.join(dirname, "web/"))
 eel_thread = threading.Thread(target=lambda: eel.start("index.html",
                                                        cmdlines_args=['--start-fullscreen'
                                                                       ],
+                                                                      shutdown_delay=1_000_000_000,
                                                     #    close_callback=lambda a, b: os._exit(
                                                     #        0)
                                                        )

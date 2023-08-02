@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Test</title>
 </head>
+
 <body>
     <div id="main-wrapper">
-        <p>Hvor mange byer er det i Frankrike?</p>
-        <form>
-            <input type="text" />
+        <p id="question">Laster...</p>
+        <form id="answer-form">
+            <input id="answer-field" type="text" autofocus autocomplete="off"/>
         </form>
+        <p id="feedback"></p>
+    </div>
+    <div id="feedback-popup">
+        <h2 id="correctness-heading">Det var ...!</h2>
+        <p><b>Du svarte:</b> <span id="you-answered"></span></p>
+        <p id="correctness-subheading">Dette var de godkjente svarene:</p>
+        <ul id="acceptable-answers-list">
+        </ul>
+        <p id="press-any-key">Trykk på en tast for å gå videre...</p>
+
     </div>
     <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="./populator.js" defer></script>
 </body>
+
 </html>
