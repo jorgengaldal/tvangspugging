@@ -1,17 +1,17 @@
 const questionTag = document.getElementById("question")
 
-
+// Global object for current question
 let questionObj;
-let acceptedAnswers = []
 
+// Function for populating question page
 eel.expose(populate)
 function populate(questionObject) {
     console.log(questionObject)
     questionTag.innerText = questionObject.question
-    acceptedAnswers = questionObject.acceptedAnswers
     questionObj = questionObject
 }
 
+// Starts populating from python with question from python-part.
 window.addEventListener("DOMContentLoaded", eel.startPopulating)
 
 const answerForm = document.getElementById("answer-form")
@@ -25,6 +25,8 @@ const acceptedAnswersList = document.getElementById("acceptable-answers-list")
 const youAnswered = document.getElementById("you-answered")
 
 answerForm.addEventListener("submit", (event) => {
+
+    // Common feedback page populating.
     event.preventDefault()
     feedbackBox.style.visibility = "visible"
     for (answer of questionObj.acceptedAnswers) {
@@ -33,11 +35,15 @@ answerForm.addEventListener("submit", (event) => {
         acceptedAnswersList.appendChild(li)
     }
     youAnswered.innerText = answerField.value
+
+    // Populating when correct answer
     if (questionObj.acceptedAnswers.includes(answerField.value)) {
         feedbackBox.style.backgroundColor = "#476b59"
         correctnessHeading.innerText = "Det var riktig!"
         window.addEventListener("keypress", window.close)
     } 
+
+    // Populating when wrong answer
     else {
         feedbackBox.style.backgroundColor = "#7d3636"
         correctnessHeading.innerText = "Det var feil!"
