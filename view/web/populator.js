@@ -24,6 +24,7 @@ const correctnessHeading = document.getElementById("correctness-heading")
 const acceptedAnswersList = document.getElementById("acceptable-answers-list")
 const youAnswered = document.getElementById("you-answered")
 
+// TODO: Separate this in a more appropriately named file
 answerForm.addEventListener("submit", (event) => {
 
     // Common feedback page populating.
@@ -35,7 +36,9 @@ answerForm.addEventListener("submit", (event) => {
         acceptedAnswersList.appendChild(li)
     }
     youAnswered.innerText = answerField.value
+    eel.log(questionObj, answerField.value)
 
+    // TODO: Account for caseInsensitivity
     // Populating when correct answer
     if (questionObj.acceptedAnswers.includes(answerField.value)) {
         feedbackBox.style.backgroundColor = "#476b59"

@@ -4,8 +4,8 @@ import os
 import threading
 import importlib
 import sys
-# from ..model.getRandomQuestion import getQuestion
 
+# from ..log.logger import logQuestion 
 
 # Dynamically imports getRandomQuestion
 randomQuestionPath = os.path.abspath(os.path.join(__file__, "../../model/getRandomQuestion.py"))
@@ -13,11 +13,22 @@ spec = importlib.util.spec_from_file_location("getRandomQuestion", randomQuestio
 getRandomQuestionModule = importlib.util.module_from_spec(spec)
 sys.modules["getRandomQuestion"] = getRandomQuestionModule
 spec.loader.exec_module(getRandomQuestionModule)
-    
+
+# TODO: DRY
+# Dynamically imports getRandomQuestion
+loggerPath = os.path.abspath(os.path.join(__file__, "../../log/logger.py"))
+loggerSpec = importlib.util.spec_from_file_location("logger", loggerPath)
+loggerModule = importlib.util.module_from_spec(loggerSpec)
+sys.modules["logger"] = loggerModule
+loggerSpec.loader.exec_module(loggerModule)
 
 @eel.expose
 def startPopulating(*args):
     eel.populate(getRandomQuestionModule.getQuestion())
+
+@eel.expose
+def log(questionObj, ans, *args):
+    loggerModule.logQuestion(questionObject=questionObj, answer=ans)
 
 # Importing registerUnlock using relative path
 import sys
