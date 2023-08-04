@@ -38,13 +38,14 @@ answerForm.addEventListener("submit", (event) => {
     youAnswered.innerText = answerField.value
     eel.log(questionObj, answerField.value)
 
-    // TODO: Account for caseInsensitivity
     // Populating when correct answer
-    if (questionObj.acceptedAnswers.includes(answerField.value)) {
+    if (questionObj.caseSensitive && questionObj.acceptedAnswers.includes(answerField.value)
+        || questionObj.acceptedAnswers.map((element) => element.toUpperCase()).includes(answerField.value.toUpperCase())) {
+        // If-statement also takes care of caseSensitivity
         feedbackBox.style.backgroundColor = "#476b59"
         correctnessHeading.innerText = "Det var riktig!"
         window.addEventListener("keypress", window.close)
-    } 
+    }
 
     // Populating when wrong answer
     else {
