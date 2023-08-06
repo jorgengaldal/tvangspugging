@@ -19,7 +19,9 @@ def giveQuestion():
     # Ensures year is within the sample spectrum, retries if not.
     dato = date.max
     while (abs(dato.year - date.today().year) > (number_of_years_to_sample_from / 2)):
-        random_ordinal = int(rng.normal(loc=today_ordinal, scale=days_of_spread))
+        random_ordinal = int(abs(rng.normal(loc=today_ordinal, scale=days_of_spread)))
+        if random_ordinal < 1:
+            continue  # As to not get the error ordinal must be >= 1
         dato = date.fromordinal(random_ordinal)
 
     resultQuestion = QUESTION_FORMAT.format(dato=dato.strftime("%d.%m.%Y"))
