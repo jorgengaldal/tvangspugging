@@ -24,8 +24,7 @@ def giveQuestion():
 
     resultQuestion = QUESTION_FORMAT.format(dato=dato.strftime("%d.%m.%Y"))
 
-    ukedag_tall = dato.weekday()
-    answer = [UKEDAGER[ukedag_tall], str(ukedag_tall)]
+    answer = [UKEDAGER[dato.weekday()], str(dato.isoweekday())]  # Plus 1 to accomodate 
 
     return {
         "type": "text",
