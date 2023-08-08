@@ -1,6 +1,7 @@
 # Project-specific
 test.py
 log/logs
+view/web/media
 
 # VS Code
 .vscode/
