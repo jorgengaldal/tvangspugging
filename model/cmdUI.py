@@ -2,12 +2,12 @@
 For testing purposes
 """
 
-from getRandomQuestion import getQuestion
+from model.getRandomQuestion import getQuestion
 
 while True:
     questionObject = getQuestion()
-    if questionObject["type"] != "text":
-        continue
+    # if questionObject["type"] != "text":
+    #     continue
 
     guess = input(questionObject["question"] + " ")
 
