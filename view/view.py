@@ -1,12 +1,9 @@
 import shutil
-import time
 import eel
 import os
 import threading
 import importlib
 import sys
-
-# from ..log.logger import logQuestion 
 
 # Dynamically imports getRandomQuestion
 randomQuestionPath = os.path.abspath(os.path.join(__file__, "../../model/getRandomQuestion.py"))
@@ -51,8 +48,6 @@ eel_thread = threading.Thread(target=lambda: eel.start("index.html",
                                                        cmdlines_args=['--start-fullscreen'
                                                                       ],
                                                                       shutdown_delay=1_000_000_000,
-                                                    #    close_callback=lambda a, b: os._exit(
-                                                    #        0)
                                                        )
                               )
 
