@@ -1,3 +1,4 @@
+import shutil
 import time
 import eel
 import os
@@ -24,6 +25,12 @@ loggerSpec.loader.exec_module(loggerModule)
 
 @eel.expose
 def startPopulating(*args):
+
+    # Cleans up temporary media from last question
+    mediaPath = os.path.abspath(os.path.join(__file__, "..\\web\\media"))
+    if (os.path.exists(mediaPath)):
+        shutil.rmtree(mediaPath)
+
     eel.populate(getRandomQuestionModule.getQuestion())
 
 @eel.expose
