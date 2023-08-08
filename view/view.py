@@ -1,3 +1,4 @@
+import registerUnlock
 import shutil
 import eel
 import os
@@ -6,8 +7,10 @@ import importlib
 import sys
 
 # Dynamically imports getRandomQuestion
-randomQuestionPath = os.path.abspath(os.path.join(__file__, "../../model/getRandomQuestion.py"))
-spec = importlib.util.spec_from_file_location("getRandomQuestion", randomQuestionPath)
+randomQuestionPath = os.path.abspath(os.path.join(
+    __file__, "../../model/getRandomQuestion.py"))
+spec = importlib.util.spec_from_file_location(
+    "getRandomQuestion", randomQuestionPath)
 getRandomQuestionModule = importlib.util.module_from_spec(spec)
 sys.modules["getRandomQuestion"] = getRandomQuestionModule
 spec.loader.exec_module(getRandomQuestionModule)
@@ -20,6 +23,7 @@ loggerModule = importlib.util.module_from_spec(loggerSpec)
 sys.modules["logger"] = loggerModule
 loggerSpec.loader.exec_module(loggerModule)
 
+
 @eel.expose
 def startPopulating(*args):
 
@@ -30,14 +34,14 @@ def startPopulating(*args):
 
     eel.populate(getRandomQuestionModule.getQuestion())
 
+
 @eel.expose
 def log(questionObj, ans, *args):
     loggerModule.logQuestion(questionObject=questionObj, answer=ans)
 
+
 # Importing registerUnlock using relative path
-import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'model/'))
-import registerUnlock
 
 # Init Eel with ./web/ as webfolder
 dirname = os.path.dirname(__file__)
@@ -47,7 +51,7 @@ eel.init(os.path.join(dirname, "web/"))
 eel_thread = threading.Thread(target=lambda: eel.start("index.html",
                                                        cmdlines_args=['--start-fullscreen'
                                                                       ],
-                                                                      shutdown_delay=1_000_000_000,
+                                                       shutdown_delay=1_000_000_000,
                                                        )
                               )
 
