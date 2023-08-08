@@ -1,5 +1,4 @@
-import shutil
-import os
+from util.use_media import use_media
 
 """
 Example: Asks for the solution to a simple math question
@@ -14,11 +13,7 @@ def giveQuestion():
     """
 
     # Temporarily copies the relevant media to the 
-    webMediaPath = os.path.abspath(os.path.join(__file__, "..\\..\\..\\view\\web\\media"))
-    if not os.path.exists(webMediaPath):
-        os.mkdir(webMediaPath)
-    questionInterstellarPath = os.path.abspath(os.path.join(__file__, ".\\..\\media\\interstellar.jpg"))
-    shutil.copyfile(questionInterstellarPath, os.path.join(webMediaPath, ".\\interstellar.jpg"))
+    use_media(__file__, ".\\media\\interstellar.jpg")
 
     return {
         "type": "image",
