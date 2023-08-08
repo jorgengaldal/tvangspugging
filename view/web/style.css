@@ -18,6 +18,9 @@ body {
     margin: 0;
 }
 
+#question {
+    margin: 0;
+}
 
 #main-wrapper {
     width: 100%;
@@ -26,6 +29,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1em;
 }
 
 input[type="text"] {
@@ -112,4 +116,16 @@ input[type="text"]:focus-visible {
     font-size: 1.2rem;
     justify-self: end;
     margin-bottom: 0.5em;
+}
+
+#resource-wrapper {
+    display: none;
+    height: 60%;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+}
+
+#resource-wrapper img {
+    height: 100%;
 }
