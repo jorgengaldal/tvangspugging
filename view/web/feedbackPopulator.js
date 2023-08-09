@@ -13,6 +13,8 @@ answerForm.addEventListener("submit", (event) => {
 
     // Common feedback page populating.
     event.preventDefault()
+    answerField.blur()  // Prevents double-submitting
+    answerField.disabled = true // -"-
     feedbackBox.style.visibility = "visible"
     for (answer of questionObj.acceptedAnswers) {
         let li = document.createElement("li")
