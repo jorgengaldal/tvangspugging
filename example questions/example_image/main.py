@@ -1,6 +1,9 @@
+from util.use_media import use_media
+
 """
-Example: Asks for the solution to a simple math question
+Example: Asks for the director of Interstellar, with an image
 """
+
 
 def giveQuestion():
     """
@@ -8,20 +11,23 @@ def giveQuestion():
 
     Example: question about the movie Interstellar
     """
-    
+
+    # Temporarily copies the relevant media to the
+    use_media(__file__, ".\\media\\interstellar.jpg")
+
     return {
-  "type": "image",
-  "question": "Hvem regisserte filmen Interstellar?",
-  "resources": [
-    {
-      "type": "image",
-      "path": "./media/interstellar.jpg"
+        "type": "image",
+        "question": "Hvem regisserte filmen Interstellar?",
+        "resources": [
+            {
+                "type": "image",
+                "path": "./media/interstellar.jpg"
+            }
+        ],
+        "acceptedAnswers": ["Christopher Nolan", "Nolan"],
+        "caseSensitive": False
     }
-  ],
-  "acceptedAnswers": ["Christopher Nolan", "Nolan"],
-  "caseSensitive": False
-}
 
 
-if __name__== "__main__":
+if __name__ == "__main__":
     print(giveQuestion())
