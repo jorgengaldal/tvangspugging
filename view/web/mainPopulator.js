@@ -4,12 +4,18 @@ const resourceWrapper = document.getElementById("resource-wrapper")
 // Global object for current question
 let questionObj;
 
+function cleanResource() {
+    resourceWrapper.innerHTML = ""
+}
+
 // Function for populating question page
 eel.expose(populate)
 function populate(questionObject) {
     console.log(questionObject)
     questionTag.innerText = questionObject.question
     questionObj = questionObject
+    cleanResource()
+
     for (let resource of questionObj.resources) {
         if (resource.type == "image") {
             resourceWrapper.style.display = "flex"
