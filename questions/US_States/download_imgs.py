@@ -7,7 +7,8 @@ BASE_IMG_PAGE_URL = "https://no.wikipedia.org/"
 
 result = []
 
-response = requests.get(WIKI_URL)
+headers = {"User-Agent": "WikiUSStatesScraper/1.0"}
+response = requests.get(WIKI_URL, headers=headers)
 
 soup = BeautifulSoup(response.content, "lxml")
 
@@ -19,7 +20,7 @@ for row in rows[1:]:
     stateName = cells[1].getText().strip()
     stateUrl = BASE_IMG_PAGE_URL + cells[5].find("a").get("href").strip()
 
-    imgPageRes = requests.get(stateUrl)
+    imgPageRes = requests.get(stateUrl, headers=headers)
     imgPageSoup = BeautifulSoup(imgPageRes.content, "lxml")
 
     imgUrl = "https:" + imgPageSoup.find(attrs={"class": "fullImageLink"}).a.get("href").strip()
@@ -27,6 +28,6 @@ for row in rows[1:]:
     fileName = os.path.abspath(".\\media\\" + stateName + ".svg")
     
     with open(fileName, "x+b") as file:
-        res = requests.get(imgUrl)
+        res = requests.get(imgUrl, headers=headers)
         file.write(res.content)
         print("Downloading state map: " + stateName)
