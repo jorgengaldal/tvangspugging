@@ -6,6 +6,9 @@ Programmet velger ut en kategori ved å trekke en tilfeldig fil fra mappen quest
 
 ### Format
 
+Spørsmålene spesifiseres gjennom JSON-formatet. Et eksempelspørsmål finnes under. Flere eksempler ligger i mappen [example questions](<./example questions/>).
+
+```json
 {
   "type": "image",
   "question": "Hvem regisserte filmen Interstellar?",
@@ -18,7 +21,7 @@ Programmet velger ut en kategori ved å trekke en tilfeldig fil fra mappen quest
   "acceptedAnswers": ["Christopher Nolan", "Nolan"],
   "caseSensitive": false
 }
-
+```
 ### Kategorier
 
 #### Vil legge til
