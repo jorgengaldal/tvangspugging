@@ -3,13 +3,13 @@ from functools import cached_property
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 import os.path
+import sys
 from mimetypes import guess_type
 
 from tvangspugging.model.getRandomQuestion import getQuestion
 
 
 WEB_BASE_PATH = Path(__file__) / ".." / "web"
-print(WEB_BASE_PATH)
 
 class Handler(BaseHTTPRequestHandler):
 
@@ -27,20 +27,32 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         result = "wrong"
 
+        # Fungerer ikke, vet ikke hvorfor
+        if self.path == "/api/success":
+            print("Stopping server!")
+            self.send_response(200)
+            self.end_headers()
+            sys.exit()
+
         if self.path == "/api/question":
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
 
-            result = json.dumps(getQuestion())
-    #         result = json.dumps({
-    #     "type": "text",
-    #     "question": "Hva er hovedstaden i Norge?",
-    #     "resources": [
-    #     ],
-    #     "acceptedAnswers": ["Oslo", "Christiania"],
-    #     "caseSensitive": False
-    # })
+            retries = 10
+            while True:
+                try:
+                    question = getQuestion()
+                    break
+                except:
+                    retries -= 1
+                    if retries < 0:
+                        # TODO: Fix this terrible code
+                        self.send_response(500)
+                        self.end_headers()
+                        return
+
+            result = json.dumps(question)
 
         elif self.web_path is not None:
             with open(self.web_path) as file:
@@ -60,6 +72,7 @@ class Handler(BaseHTTPRequestHandler):
 def run(server_class=HTTPServer, handler_class=Handler):
     server_address = ('', 16000)
     httpd = server_class(server_address, handler_class)
+    print("Starting server!")
     httpd.serve_forever()
 
 

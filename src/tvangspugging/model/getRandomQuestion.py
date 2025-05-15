@@ -1,7 +1,8 @@
 import os
 import random
-import importlib.
+import importlib
 import sys
+import importlib.util
 
 
 def getQuestion():
@@ -13,6 +14,7 @@ def getQuestion():
 
     # Dynamically imports module
     spec = importlib.util.spec_from_file_location("main", randomQuestionPath)
+    # TODO: Make typesafe
     module = importlib.util.module_from_spec(spec)
     sys.modules["main"] = module
     spec.loader.exec_module(module)

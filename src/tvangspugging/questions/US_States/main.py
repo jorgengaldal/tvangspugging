@@ -1,7 +1,7 @@
 import json
 import os
 import random
-from util.use_media import use_media
+from tvangspugging.util.use_media import use_media
 
 """
 Example: Asks for the solution to a simple math question

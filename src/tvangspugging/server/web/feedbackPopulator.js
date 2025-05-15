@@ -30,7 +30,11 @@ answerForm.addEventListener("submit", (event) => {
         // If-statement also takes care of caseSensitivity
         feedbackBox.style.backgroundColor = "#476b59"
         correctnessHeading.innerText = "Det var riktig!"
-        window.addEventListener("keypress", window.close)
+        window.addEventListener("keypress", () => {
+            fetch("/api/success").then(() => {
+                window.close()
+            })
+        })
     }
 
     // Populating when wrong answer

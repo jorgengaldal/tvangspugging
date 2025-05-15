@@ -1,3 +1,4 @@
-# import view.view
+from tvangspugging.server.main import run
 
-# from tvangspugging.server.
+if __name__ == "__main__":
+    run()

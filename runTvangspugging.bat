@@ -1,6 +1,4 @@
 chcp 65001
-cd "c:\Users\Jørgen Galdal\Documents\Lokal programmering\tvangspugging"
+cd "C:\simplePathProgramming\tvangspugging"
 call .\.venv\Scripts\activate
-
-call python .\model\cmdUI.py 
-cmd /k
+start /b python run.py && start /b "" "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --kiosk "http://localhost:16000"
