@@ -5,6 +5,9 @@
 - Clone repository with `git clone`
 - run `python installToStartup.py`
 
+TODO: Update "installation guide" and make new installation script.
+Has been added as a task in Windows Task Scheduler.
+
 ### Activating virtual environment
 
 ```bash
