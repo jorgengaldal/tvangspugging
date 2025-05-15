@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "c:\Users\Jørgen Galdal\Documents\Lokal programmering\tvangspugging\model\cmdUI.py", line 11, in <module>
+    questionObject = getQuestion()
+                     ^^^^^^^^^^^^^
+  File "c:\Users\Jørgen Galdal\Documents\Lokal programmering\tvangspugging\model\getRandomQuestion.py", line 18, in getQuestion
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 994, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "c:\Users\Jørgen Galdal\Documents\Lokal programmering\tvangspugging\questions\US_States\main.py", line 4, in <module>
+    from util.use_media import use_media
+ModuleNotFoundError: No module named 'util'

@@ -22,7 +22,7 @@ answerForm.addEventListener("submit", (event) => {
         acceptedAnswersList.appendChild(li)
     }
     youAnswered.innerText = answerField.value
-    eel.log(questionObj, answerField.value)
+    // eel.log(questionObj, answerField.value)
 
     // Populating when correct answer
     if (questionObj.caseSensitive && questionObj.acceptedAnswers.includes(answerField.value)
