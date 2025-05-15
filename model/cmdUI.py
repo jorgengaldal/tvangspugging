@@ -2,12 +2,19 @@
 For testing purposes
 """
 
-from model.getRandomQuestion import getQuestion
+with open("opened", "w") as file:
+    file.write("Test")
 
+from getRandomQuestion import getQuestion
+
+failed_attempts = 0
 while True:
     questionObject = getQuestion()
-    # if questionObject["type"] != "text":
-    #     continue
+    if questionObject["type"] != "text":
+        failed_attempts += 1
+        if failed_attempts >= 100:
+            break
+        continue
 
     guess = input(questionObject["question"] + " ")
 

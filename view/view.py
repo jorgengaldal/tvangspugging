@@ -27,9 +27,12 @@ def log(questionObj, ans, *args):
 dirname = os.path.dirname(__file__)
 eel.init(os.path.join(dirname, "web/"))
 
+eel.browsers.set_path('electron', 'view\\node_modules\\electron\\dist\\electron')
+
 # Thread for eel instance
 eel_thread = threading.Thread(target=lambda: eel.start("index.html",
-                                                       cmdlines_args=['--start-fullscreen'
+                                                       mode="electron",
+                                                       cmdlines_args=['--kiosk'
                                                                       ],
                                                        shutdown_delay=1_000_000_000,
                                                        )
@@ -40,7 +43,7 @@ eel_thread = threading.Thread(target=lambda: eel.start("index.html",
 def registerMonitor():
     m = registerUnlock.WTSMonitor(
         lambda: eel.show("index.html"), all_sessions=True)
-    m.start()
+    m.start()   
 
 
 WTS_thread = threading.Thread(target=registerMonitor)
