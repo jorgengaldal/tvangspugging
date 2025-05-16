@@ -1,24 +1,32 @@
 # tvangspugging
 
+*__Note:__ The project is currently only made to work on Windows, but can probably be customized to work on other operating systems pretty easily.*
+
 ## Get started
 
-- Clone repository with `git clone`
-- run `python installToStartup.py`
+Clone repository (with `git clone`).
 
-TODO: Update "installation guide" and make new installation script.
-Has been added as a task in Windows Task Scheduler.
-
-### Activating virtual environment
-
-```bash
+Create and activate virutal environment:
+```cmd
 python -m venv .venv
 .\.venv\Scripts\activate
 ```
 
-### Testing
+Install dependencies:
+```cmd
+pip install -r requirements.txt
+```
 
-To test the visual program, navigate to the tvangspugging directory and run `python run.py`
+Run installation file:
+```cmd
+python install.py
+```
 
+Add the created run.bat file as a task in Windows Task Scheduler on every unlock.
+(TODO: Automate this process)
+
+## Configuration
+TODO
 
 ## Hvordan fungerer det?
 
@@ -42,14 +50,12 @@ Spørsmålene spesifiseres gjennom JSON-formatet. Et eksempelspørsmål finnes u
   "caseSensitive": false
 }
 ```
-### Kategorier
 
-#### Vil legge til
+### Current categories
+- US States (based on map)
+- Capitals of the world (based on name of country)
+- Which weekday is this date? (Doomsday algorithm)
 
+#### Want to add
 - Oversettelser av ord på toki pona
-- Hovedsteder i land
 - Hvilken kommune er dette (basert på bilde)?
-- Doomsday algorithm: Ukedag basert på dato
-
-
-TODO: Make requirements.txt-file

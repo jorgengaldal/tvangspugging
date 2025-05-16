@@ -6,6 +6,7 @@ test.py
 **/log/stdoutlogexit
 view/web/media
 **/server/web/media
+run.bat
 
 # VS Code
 .vscode/
