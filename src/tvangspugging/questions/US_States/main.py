@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 import random
 from tvangspugging.util.use_media import use_media
 
@@ -22,11 +23,8 @@ def giveQuestion():
 
     state = random.choice(states)
 
-    statePath = state["path"]
+    statePath = (Path(__file__) / ".." / state["path"]).absolute()
     answer = state["state"]
-
-    # Temporarily copies the relevant media to the 
-    use_media(__file__, statePath)
 
     return {
         "type": "image",
