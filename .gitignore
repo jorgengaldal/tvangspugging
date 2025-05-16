@@ -4,6 +4,7 @@ log/quizlog
 log/stderrlog
 log/stdoutlog
 view/web/media
+**/server/web/media
 
 # VS Code
 .vscode/
