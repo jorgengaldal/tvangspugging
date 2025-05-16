@@ -2,7 +2,6 @@ import json
 import os
 from pathlib import Path
 import random
-from tvangspugging.util.use_media import use_media
 
 """
 Example: Asks for the solution to a simple math question
