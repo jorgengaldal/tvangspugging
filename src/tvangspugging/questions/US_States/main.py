@@ -1,7 +1,7 @@
 import json
 import os
+from pathlib import Path
 import random
-from util.use_media import use_media
 
 """
 Example: Asks for the solution to a simple math question
@@ -22,11 +22,8 @@ def giveQuestion():
 
     state = random.choice(states)
 
-    statePath = state["path"]
+    statePath = (Path(__file__) / ".." / state["path"]).absolute()
     answer = state["state"]
-
-    # Temporarily copies the relevant media to the 
-    use_media(__file__, statePath)
 
     return {
         "type": "image",

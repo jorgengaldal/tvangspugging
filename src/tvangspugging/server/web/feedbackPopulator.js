@@ -22,7 +22,6 @@ answerForm.addEventListener("submit", (event) => {
         acceptedAnswersList.appendChild(li)
     }
     youAnswered.innerText = answerField.value
-    eel.log(questionObj, answerField.value)
 
     // Populating when correct answer
     if (questionObj.caseSensitive && questionObj.acceptedAnswers.includes(answerField.value)
@@ -30,15 +29,19 @@ answerForm.addEventListener("submit", (event) => {
         // If-statement also takes care of caseSensitivity
         feedbackBox.style.backgroundColor = "#476b59"
         correctnessHeading.innerText = "Det var riktig!"
-        window.addEventListener("keypress", window.close)
+        onkeydown = () => {
+            fetch("/api/success").then(() => {
+                window.close()
+            })
+        }
     }
 
     // Populating when wrong answer
     else {
         feedbackBox.style.backgroundColor = "#7d3636"
         correctnessHeading.innerText = "Det var feil!"
-        window.addEventListener("keypress", (event) => {
+        onkeydown = () => {
             location.reload()
-        })
+        }
     }
 })

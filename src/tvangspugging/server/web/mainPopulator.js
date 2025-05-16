@@ -8,9 +8,16 @@ function cleanResource() {
     resourceWrapper.innerHTML = ""
 }
 
+function populate() {
+    // Fetch question object
+    fetch("/api/question").then(res => res.json()).then(questionObj => {
+        populateQuestion(questionObj)
+    })
+
+}
+
 // Function for populating question page
-eel.expose(populate)
-function populate(questionObject) {
+function populateQuestion(questionObject) {
     console.log(questionObject)
     questionTag.innerText = questionObject.question
     questionObj = questionObject
@@ -29,5 +36,5 @@ function populate(questionObject) {
 }
 
 // Starts populating from python with question from python-part.
-window.addEventListener("DOMContentLoaded", eel.startPopulating)
+window.addEventListener("DOMContentLoaded", populate)
 
