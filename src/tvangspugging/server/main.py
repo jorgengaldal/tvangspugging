@@ -31,7 +31,6 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         result = "wrong"
 
-        # Fungerer ikke, vet ikke hvorfor
         if self.path == "/api/success":
             print("Stopping server!")
             self.send_response(200)
