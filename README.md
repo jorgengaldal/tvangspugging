@@ -15,10 +15,6 @@ python -m venv .venv
 .\.venv\Scripts\activate
 ```
 
-### Cannot import bottle.ext.websocket
-
-Følg workaround her: https://stackoverflow.com/questions/77232001/python-eel-module-unable-to-use-import-bottle-ext-websocket-as-wbs-modulenotfoun
-
 ### Testing
 
 To test the visual program, navigate to the tvangspugging directory and run `python run.py`
