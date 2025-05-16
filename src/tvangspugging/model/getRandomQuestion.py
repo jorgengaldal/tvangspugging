@@ -3,19 +3,21 @@ import random
 import importlib
 import sys
 import importlib.util
+from pathlib import Path
+from tvangspugging.model.config import config
 
 
 def getQuestion():
     # Chooses random question path
     # TODO: Fix paths
-    QUESTION_DIR = os.path.abspath(__file__ + "\\..\\..\\questions\\")
+    QUESTION_DIR = Path(__file__) / ".." / ".." / "questions"
     # TODO: Goto next type if question pack can not be imported.
-    randomQuestionPath = os.path.join(QUESTION_DIR, random.choice(
-        [path for path in os.listdir(QUESTION_DIR) if (not "__pycache__" in path) and os.path.isdir(os.path.join(QUESTION_DIR, path))]),
-        "main.py")  # Ensures that only directories (and not __pycache__) are chosen.
+    wantedQuestionPacks = config()["question_packs"] 
+    possiblePathChoices = [package for package in QUESTION_DIR.iterdir() if package.name in wantedQuestionPacks]
+    randomQuestionPath = random.choice(possiblePathChoices) / "main.py"
 
     # Dynamically imports module
-    spec = importlib.util.spec_from_file_location("main", randomQuestionPath)
+    spec = importlib.util.spec_from_file_location("main", randomQuestionPath.absolute())
     if spec is None or spec.loader is None:
         raise ImportError("Could not import question pack correctly")
     

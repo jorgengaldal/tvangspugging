@@ -1,0 +1,7 @@
+# Configuration options
+
+# List of question packs (from question-folder) that should be used
+question_packs:
+- hovedsteder
+- US_States
+# - doomsdayAlgorithm
