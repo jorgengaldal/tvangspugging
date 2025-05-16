@@ -2,10 +2,7 @@
 For testing purposes
 """
 
-with open("opened", "w") as file:
-    file.write("Test")
-
-from getRandomQuestion import getQuestion
+from tvangspugging.model.getRandomQuestion import getQuestion
 
 failed_attempts = 0
 while True:
