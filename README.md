@@ -30,6 +30,8 @@ Programmet velger ut en kategori ved å trekke en tilfeldig fil fra mappen quest
 
 ### Format
 
+Spørsmålene spesifiseres gjennom JSON-formatet. Et eksempelspørsmål finnes under. Flere eksempler ligger i mappen [example questions](<./example questions/>).
+
 ```json
 {
   "type": "image",
