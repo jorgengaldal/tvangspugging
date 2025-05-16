@@ -1,8 +1,9 @@
 # Project-specific
 test.py
-log/quizlog
-log/stderrlog
-log/stdoutlog
+**/log/quizlog
+**/log/stderrlog
+**/log/stdoutlog
+**/log/stdoutlogexit
 view/web/media
 **/server/web/media
 
