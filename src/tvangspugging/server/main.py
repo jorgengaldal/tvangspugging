@@ -1,16 +1,14 @@
 import json
-from functools import cached_property
-from http.server import HTTPServer, BaseHTTPRequestHandler
-from pathlib import Path
-import os.path
+import os
 import shutil
-import urllib.parse
 import sys
+import urllib.parse
+from functools import cached_property
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from mimetypes import guess_type
+from pathlib import Path
 
 from tvangspugging.model.getRandomQuestion import getQuestion
-# from tvangspugging.util.use_media import use_media
-
 
 WEB_BASE_PATH = Path(__file__) / ".." / "web"
 MEDIA_BASE_PATH = WEB_BASE_PATH / "media"
